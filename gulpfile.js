@@ -35,16 +35,22 @@ gulp.task('serve', function() {
       baseDir:"./"
     }
   });
+});
 
-})
+
+gulp.task('html', function() {
+  
+  gulp.watch('index.html').on('change',bs.reload());
+});
+
 // gulp watch
 gulp.task('watch', function() {
   gulp.watch([cssSrcPath], ['compile-css']);
-  gulp.watch('index.html').on('change',bs.reload());
-})
+  gulp.watch(['./index.html'], ['html']);
+});
 
 
 //gulp default
 gulp.task('default', function() {
   runSeq('serve','compile-css', 'watch')
-})
+});
