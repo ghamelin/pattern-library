@@ -1,0 +1,22 @@
+{
+  "name": "css-library",
+  "version": "1.0.0",
+  "description": "A modular CSS library created to practice the priciples of modular CCS trying to adhere to OOCSS, SMACSS, & bem.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redhedgh12/pattern-library.git"
+  },
+  "author": "DGH ©2017",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/redhedgh12/pattern-library/issues"
+  },
+  "homepage": "https://github.com/redhedgh12/pattern-library#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12"
+  }
+}
