@@ -1,5 +1,5 @@
 const gulp     = require('gulp'),
-      bs       = require('browser-sync'),
+      bs       = require('browser-sync').create(),
       plugins  = require('gulp-load-plugins')(),
       runSeq   = require('run-sequence'),
       del      = require('del'),
@@ -8,12 +8,13 @@ const gulp     = require('gulp'),
       cssNext  = require('postcss-cssnext'),
       cssSrcPath = 'src/assets/css/**/*.css',
       cssDestPath = 'public/assets/css';
+      
 
 
 
 // CSS Task
 
-gulp.task('compile-css', function(){
+gulp.task('compile-css', function() {
   const plugs = [shortCss, cssNext];
 
   return gulp.src([cssSrcPath])
@@ -24,14 +25,26 @@ gulp.task('compile-css', function(){
   .pipe(plugins.cleanCss())
   .pipe(plugins.sourcemaps.write('.'))
   .pipe(gulp.dest(cssDestPath))
+  .pipe(bs.stream());
 });
 
+// gulp browser-sync task
+gulp.task('serve', function() {
+  bs.init({
+    server: {
+      baseDir:"./"
+    }
+  });
 
+})
 // gulp watch
-gulp.task('watch', function(){
+gulp.task('watch', function() {
   gulp.watch([cssSrcPath], ['compile-css']);
+  gulp.watch('index.html').on('change',bs.reload());
 })
 
 
 //gulp default
-gulp.task('default', ['compile-css', 'watch'])
+gulp.task('default', function() {
+  runSeq('serve','compile-css', 'watch')
+})
