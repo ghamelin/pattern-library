@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/redhedgh12/pattern-library#readme",
   "devDependencies": {
-    "browser-sync": "^2.18.12"
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1"
   }
 }
