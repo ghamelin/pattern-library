@@ -18,7 +18,6 @@ gulp.task('compile-css', function () {
   const plugs = [shortCss, cssNext];
 
   return gulp.src([cssSrcPath])
-
     .pipe(plugins.sourcemaps.init())
     .pipe(postCss(plugs))
     .pipe(plugins.concat('lib.min.css'))
@@ -29,22 +28,16 @@ gulp.task('compile-css', function () {
 });
 
 // gulp browser-sync task
-gulp.task('serve', function () {
+gulp.task('serve', ['compile-css'],function () {
   bs.init({
     server: {
       baseDir: "./"
     }
   });
-
-})
-// gulp watch
-gulp.task('watch', function () {
-  gulp.watch([cssSrcPath], ['compile-css']);
   gulp.watch('index.html').on('change', bs.reload);
+  gulp.watch(cssSrcPath, ['compile-css']);
 });
 
 
 //gulp default
-gulp.task('default', function () {
-  runSeq('serve', 'compile-css', 'watch')
-});
+gulp.task('default', ['serve']);

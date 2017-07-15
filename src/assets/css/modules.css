@@ -1,0 +1,31 @@
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid white;
+  color: black;
+  margin: 2px;
+  text-align: center;
+}
+.btn--clear {
+  border-color: black;
+  color: black;
+}
+.btn--red {
+  border-color: red;
+  color: white;
+  background-color: red;
+}
+.btn--blue {
+  background-color: blue;
+  color: white;
+  border-color: blue;
+}
+.btn--med {
+  padding: 7px 40px;
+}
+.btn--lg {
+  padding: 7px 80px;
+}
